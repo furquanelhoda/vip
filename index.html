@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+
+    <title> & فرقان الهدى &  </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>/* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Traditional Arabic', Arial, sans-serif;
+        }
+        
+        html {
+            font-size: 16px;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1f3c, #2a284f);
+            min-height: 100vh;
+            padding: 1rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            margin-bottom: 100px; /* Space for footer */
+        }
+        
+        /* Main Title */
+        .main-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+            animation: fadeInDown 1s ease;
+            word-wrap: break-word;
+        }
+        
+        /* Tree Container */
+        .tree-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        /* Branch Styles */
+        .branch {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .branch:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 0 12px 40px 0 rgba(76, 175, 80, 0.25);
+        }
+        
+        .branch-title {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .branch-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #4CAF50;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .branch:hover .branch-title::after {
+            width: 100px;
+        }
+        
+        /* Content Area */
+        .content-area {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Links Styles */
+        .nesbiate, .furqan-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .nesbiate, .furqan-link {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .nesbiate::before, .furqan-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nesbiate:hover::before, .furqan-link:hover::before {
+            left: 100%;
+        }
+        
+        .nesbiate:hover, .furqan-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* Tables List */
+        .tables-list {
+            list-style: none;
+        }
+        
+        .tables-list li {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeInLeft 0.5s ease;
+        }
+        
+        .tables-list li::before {
+            content: '◈';
+            margin-left: 10px;
+            color: #4CAF50;
+        }
+        
+        .tables-list li:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: translateX(-10px);
+            padding-right: 25px;
+        }
+        
+        /* Language Switcher */
+        .language-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .language-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .lang-btn {
+            position: relative;
+            width: 135px;
+            padding: 6px 18px;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            z-index: 2;
+        }
+        
+        .hover-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        
+        .lang-btn:hover .hover-effect {
+            opacity: 1;
+        }
+        
+        .lang-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .lang-info {
+            text-align: left;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        
+        .lang-text {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .lang-code {
+            display: block;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+        
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-media a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        .social-media a:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        
+        .social-media i {
+            font-size: 24px;
+        }
+        
+        /* Social Media Icons Colors */
+        .fa-skype { color: #00AFF0; }
+        .fa-youtube { color: #FF0000; }
+        .fa-discord { color: #5865F2; }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            html { font-size: 15px; }
+        }
+        
+        @media (max-width: 992px) {
+            html { font-size: 14px; }
+            .tree-container { gap: 20px; }
+        }
+        
+        @media (max-width: 768px) {
+            html { font-size: 13px; }
+            .container { padding: 0 10px; }
+            .tree-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .main-title { font-size: 2rem; }
+            .branch-title { font-size: 1.6rem; }
+            .language-switcher { gap: 10px; }
+        }
+        
+        @media (max-width: 576px) {
+            html { font-size: 12px; }
+            .lang-btn {
+                width: 120px;
+                padding: 5px 15px;
+            }
+            .social-media a {
+                width: 35px;
+                height: 35px;
+            }
+            .social-media i { font-size: 20px; }
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">الفرقان & النسبية & السبع المثاني</h1>
+        <!-- switcher language -->
+        <div class="language-container">
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="ar">
+                    <div class="btn-content">
+                        <span class="lang-icon">🌙</span>
+                        <div class="lang-info">
+                            <span class="lang-text">العربية</span>
+                            <span class="lang-code">Arabic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                </button>
+
+                <button class="lang-btn" data-lang="fr">
+                    <div class="btn-content">
+                        <span class="lang-icon">🗼</span>
+                        <div class="lang-info">
+                            <span class="lang-text">Français</span>
+                            <span class="lang-code">French</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                </button>
+
+                <button class="lang-btn" data-lang="en">
+                    <div class="btn-content">
+                        <span class="lang-icon">🌎</span>
+                        <div class="lang-info">
+                            <span class="lang-text">English</span>
+                            <span class="lang-code">English</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                </button>
+            </div>
+        </div>
+        <!-- End switcher language -->
+
+        <div class="tree-container">
+            <!-- النسبية -->
+            <div class="branch" onclick="toggleContent('relative-content')">
+                <div class="branch-title">النسبية</div>
+                <div id="relative-content" class="content-area">
+                    <a href="./nesbia.html" id="relative-content" class="nesbiate">موقع النسبية</a>
+                    <div id="root"></div>
+                </div>
+            </div>
+
+            <!-- مواقع الفرقان -->
+            <div class="branch" onclick="toggleContent('furqan-content')">
+                <div class="branch-title">مواقع الفرقان</div>
+                <div id="furqan-content" class="content-area">
+                    <div class="furqan-links">
+                        <a href="./furquanelhoda1.html" class="furqan-link">
+                            فرقان الهدى -(1)
+                        </a>
+                        <a href="./furquanelhoda2.html" target="_blank" class="furqan-link">
+                            فرقان الهدى - (2)
+                        </a>
+                        <a href="./furquanelhoda3.html" target="_blank" class="furqan-link">
+                            فرقان الهدى - (3)
+                        </a>
+                        <a href="./furquanelhoda4.html" target="_blank" class="furqan-link">
+                            فرقان الهدى - (4)
+                        </a>
+                        <a href="./furquanelhoda5.html" target="_blank" class="furqan-link">
+                            فرقان الهدى - (5)
+                        </a>
+                        <a href="./furquanelhoda6.html" target="_blank" class="furqan-link">
+                            فرقان الهدى - (6)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجداول -->
+            <div class="branch" onclick="toggleContent('tables-content')">
+                <div class="branch-title">الجداول</div>
+                <div id="tables-content" class="content-area">
+                    <ul class="tables-list">
+                        <li onclick="window.location.href='./tasnimsaid1.html'">
+                            فروق الآيات الحروف الكلمات
+                        </li>
+                        <li onclick="window.location.href='./tasnimsaid4.html'">
+                            فروق النسب التراكمية :) الآيات الحروف الكلمات
+                        </li>
+                        <li onclick="window.location.href='./tasnimsaid2.html'">
+                            جدول الفهرس التراكمي للقرآن الكريم
+                        </li>
+                        <li onclick="window.location.href='./tasnimsaid3.html'">
+                            جدول التنزيل التراكمي للقرآن الكريم
+                        </li>
+                        <li onclick="window.location.href='./tasnimsaid5.html'">
+                            فروق العدد والنسب الآيات الحروف الكلمات
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- copyright -->
+    <div class="footer">
+        <div class="copyright">
+            Copyright &copy; <span class="year">
+            <script>document.write(new Date().getFullYear())</script>
+            </span> Furqan Al-Huda. All rights reserved.
+        </div>
+        <div class="social-media">
+            <a href="skype:Zakaria Coranist?+33628063053" target="_blank" title="Skype">
+                <i class="fab fa-skype"></i>
+            </a>
+            <a href="https://www.youtube.com/@Zakkar-YAH" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://discord.gg/your_server" target="_blank" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+        </div>
+    </div>
+    <!-- العناصر التي سيتم تحديثها -->
+    <div id="title"></div>
+    <div id="relative-content"></div>
+    <div id="furqan-content"></div>
+    <div id="tables-content"></div>
+    <div id="copyright-content"></div>
+    <div id="nesbia-content"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.lang-btn');
+            let currentLang = localStorage.getItem('selectedLang') || 'ar';
+
+            const updateLanguage = (lang) => {
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if(btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+
+                        // تأثير موجة عند النقر
+                        const ripple = document.createElement('div');
+                        ripple.classList.add('ripple');
+                        btn.appendChild(ripple);
+
+                        setTimeout(() => ripple.remove(), 1000);
+                    }
+                });
+
+                document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                localStorage.setItem('selectedLang', lang);
+
+                // تأثير انتقالي للصفحة بأكملها
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    loadLanguage(lang);
+                    document.body.style.opacity = '1';
+                }, 300);
+            };
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.dataset.lang;
+                    updateLanguage(lang);
+                });
+
+                // إضافة تأثير حركي عند التحويم
+                button.addEventListener('mousemove', (e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    button.style.setProperty('--mouse-x', `${x}px`);
+                    button.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+            // تعيين اللغة الافتراضية
+            updateLanguage(currentLang);
+        });
+
+        // إضافة تأثيرات CSS متقدمة
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+
+            .lang-btn {
+                --mouse-x: 0;
+                --mouse-y: 0;
+            }
+
+            .hover-effect::before {
+                content: '';
+                position: absolute;
+                top: var(--mouse-y);
+                left: var(--mouse-x);
+                width: 300px;
+                height: 300px;
+                background: radial-gradient(circle closest-side, rgba(255,255,255,0.2), transparent);
+                transform: translate(-50%, -50%);
+                transition: all 0.2s ease;
+            }
+        `;
+
+        document.head.appendChild(style);
+
+        function toggleContent(contentId) {
+            const allContents = document.querySelectorAll('.content-area');
+            allContents.forEach(content => {
+                if (content.id !== contentId) {
+                    content.style.display = 'none';
+                }
+            });
+
+            const content = document.getElementById(contentId);
+            if (content.style.display !== 'block') {
+                content.style.display = 'block';
+                content.classList.add('animate__animated', 'animate__fadeIn');
+            } else {
+                content.style.display = 'none';
+            }
+        }
+
+        function searchNisba(searchTerm) {
+            const resultsDiv = document.getElementById('search-results');
+            resultsDiv.innerHTML = '';
+
+            if (searchTerm.length < 2) return;
+
+            const results = nisbaDatabase.filter(item =>
+                item.title.includes(searchTerm)
+            );
+
+            results.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                resultElement.textContent = result.title;
+                resultElement.onclick = () => window.location.href = result.link;
+                resultsDiv.appendChild(resultElement);
+            });
+        }
+
+        document.querySelectorAll('.content-area').forEach(content => {
+            content.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // إضافة حركات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.branch').forEach((branch, index) => {
+                branch.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        const languageSwitcher = document.querySelector('.language-switcher');
+        let currentLanguage = 'ar';
+
+        async function loadLanguage(lang) {
+            try {
+                const response = await fetch(`${lang}.json`);
+                const translations = await response.json();
+
+                // Update document direction
+                document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+                // Update content
+                document.querySelector('.main-title').textContent = translations.title;
+
+                // Update language buttons
+                document.querySelectorAll('.lang-btn').forEach((btn, index) => {
+                    btn.querySelector('.lang-icon').textContent = translations['language-buttons'][index]['lang-icon'];
+                    btn.querySelector('.lang-text').textContent = translations['language-buttons'][index]['lang-text'];
+                    btn.querySelector('.lang-code').textContent = translations['language-buttons'][index]['lang-code'];
+                });
+
+                // Update branch titles
+                document.querySelectorAll('.branch-title').forEach((element, index) => {
+                    const keys = ['relative-content', 'furqan-content', 'tables-content'];
+                    element.textContent = translations[keys[index]].title;
+                });
+
+                // Update other content as needed
+                document.querySelector('#relative-content a').textContent = translations['relative-content'].items[0].text;
+                document.querySelectorAll('.furqan-link').forEach((link, index) => {
+                    link.textContent = translations['furqan-content'].items[index].text;
+                });
+                document.querySelectorAll('.tables-list li').forEach((item, index) => {
+                    item.textContent = translations['tables-content'].items[index].text;
+                });
+
+                // Update footer
+                document.querySelector('.copyright').innerHTML = translations.footer.copyright;
+
+                currentLanguage = lang;
+
+                // Save language preference
+                localStorage.setItem('preferredLanguage', lang);
+
+                // Update active state of language buttons
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            } catch (error) {
+                console.error('Error loading language:', error);
+            }
+        }
+
+        // Add click event listeners to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                loadLanguage(btn.dataset.lang);
+            });
+        });
+
+        // Load saved language preference or default to Arabic
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'ar';
+            loadLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
